@@ -1,0 +1,154 @@
+.jumbo {
+    background-image: url('./48573wide.jpg');
+    background-position: center;
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+    background-color: black;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    height: 150px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row::after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.hidden {
+    display: none;
+}
+
+.row {
+    overflow-y: hidden;
+}
+
+.centered {
+    justify-content: center;
+    align-items: center;
+}
+
+.authenticationLayout {
+    height: 100%;
+    background-color: blueviolet;
+}
+
+.img-background {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; /* Center the image */
+}
+
+.authorization {
+    background-image: url('../assets/images/blue.jpg');
+    background-repeat: no-repeat;
+    background-position: center; /* Center the image */
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3%;
+    background-color: #ffd944;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.hamburger-button {
+    cursor: pointer;
+}
+
+[class*='team-col-'] {
+    width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+    [class*='team-col-'] {
+        float: left;
+    }
+    .team-col-1 {
+        width: 8.33%;
+    }
+    .team-col-2 {
+        width: 16.66%;
+    }
+    .team-col-3 {
+        width: 25%;
+    }
+    .team-col-4 {
+        width: 33.33%;
+    }
+    .team-col-5 {
+        width: 41.66%;
+    }
+    .team-col-6 {
+        width: 50%;
+    }
+    .team-col-7 {
+        width: 58.33%;
+    }
+    .team-col-8 {
+        width: 66.66%;
+    }
+    .team-col-9 {
+        width: 75%;
+    }
+    .team-col-10 {
+        width: 83.33%;
+    }
+    .team-col-11 {
+        width: 91.66%;
+    }
+    .team-col-12 {
+        width: 100%;
+    }
+
+    .right-content {
+        left: 8%;
+        position: absolute;
+        padding: 1px 16px;
+        min-height: 1000px;
+        background-color: transparent;
+        transition: all 1s ease;
+    }
+
+    .right-content-expanded {
+        left: 16.66%;
+        position: absolute;
+        padding: 1px 16px;
+        min-height: 1000px;
+        background-color: transparent;
+        transition: all 1s ease;
+    }
+
+    .main-content {
+        padding: 24px;
+    }
+    .hamburger-button {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+    .hamburger-button {
+        display: inline;
+    }
+    .main-content {
+        padding: 24px;
+    }
+}
