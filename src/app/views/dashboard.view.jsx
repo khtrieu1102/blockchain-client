@@ -7,18 +7,36 @@ import { useSelector } from 'react-redux';
 
 const Dashboard = (props) => {
     const currentUserReducer = useSelector((state) => state.currentUserReducer);
-    const { username, privateKey } = currentUserReducer;
+    const authorizationReducer = useSelector((state) => state.authorizationReducer);
+    const { isAuthenticated } = authorizationReducer;
+    const { username, privateKey } = currentUserReducer.currentUser;
     const mountedRef = useRef(true);
     const [isLoading, setIsLoading] = useState(false);
+    const [balance, setBalance] = useState('');
 
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: 'VND',
+        currency: 'BTC',
         minimumFractionDigits: 0,
     });
-    const formattedBalance = formatter.format(balance);
+    const formattedBalance = formatter.format('1233');
+
+    const loadData = async () => {
+        if (isAuthenticated === false) return;
+        await apiMethods.blockchain
+            .getCurrentBalance()
+            .then((result) => result.data.balance)
+            .then((result) => {
+                setIsLoading(false);
+                setBalance(formatter.format(result));
+            })
+            .catch((err) => {
+                setIsLoading(false);
+            });
+    };
 
     useEffect(() => {
+        loadData();
         return () => {
             mountedRef.current = false;
         };
@@ -42,6 +60,7 @@ const Dashboard = (props) => {
                     messageType: MessageBox.MessageType.Success,
                     key: 'mine-block',
                 });
+                loadData();
             })
             .catch((err) => {
                 let messageContent = 'Cannot create at the moment! Try again later';
@@ -60,6 +79,8 @@ const Dashboard = (props) => {
         setIsLoading(false);
     };
 
+    console.log({ username });
+
     return (
         <Container fluid>
             <Row>
@@ -69,35 +90,50 @@ const Dashboard = (props) => {
                         <Card.Body>
                             <Card.Title>
                                 Xin chào,{' '}
-                                <Link to="/edit">
-                                    <span className="text-primary">
-                                        {name ? name : 'Sử dụng ví ngay!'}
-                                    </span>
-                                </Link>
+                                {!username || username === '' ? (
+                                    <Link to="/login">
+                                        <span className="text-primary">Sử dụng ví ngay!</span>
+                                    </Link>
+                                ) : (
+                                    <span>{username.toUpperCase()}</span>
+                                )}
                             </Card.Title>
-                            <Card.Text>
-                                Số dư khả dụng của bạn:{' '}
-                                <span className="text-primary">{formattedBalance}</span>
-                            </Card.Text>
+                            {isAuthenticated && (
+                                <p>
+                                    Số dư khả dụng của bạn:{' '}
+                                    <span className="text-primary" style={{ fontSize: 20 }}>
+                                        {balance}
+                                    </span>
+                                </p>
+                            )}
                             <Col>
                                 <Button
                                     variant="primary"
                                     className="extraButton"
                                     onClick={mineBlockHandle}
+                                    disabled={!isAuthenticated}
                                 >
-                                    Mine a raw block (no data)
+                                    Mine a block (no data)
                                 </Button>
                             </Col>
                             <Col className="mt-2">
                                 <Link to="/transaction" className="extraButton">
-                                    <Button variant="primary" className="extraButton">
-                                        Mine a block (with transaction data)
+                                    <Button
+                                        variant="primary"
+                                        className="extraButton"
+                                        disabled={!isAuthenticated}
+                                    >
+                                        Mine a raw block (with transaction data)
                                     </Button>
                                 </Link>
                             </Col>
                             <Col className="mt-2">
-                                <Link to="/debt" className="extraButton">
-                                    <Button variant="primary" className="extraButton">
+                                <Link to="/transfer" className="extraButton">
+                                    <Button
+                                        variant="primary"
+                                        className="extraButton"
+                                        disabled={!isAuthenticated}
+                                    >
                                         Transfer
                                     </Button>
                                 </Link>
