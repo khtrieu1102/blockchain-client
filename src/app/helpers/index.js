@@ -2,6 +2,21 @@ import _const from '../assets/const';
 import enums from '../enums';
 import apiMethods from '../http-client/api-methods';
 import MessageBox from './MessageBox';
+import _ from 'lodash';
+
+function truncateAddress(value) {
+    return _.truncate(value, {
+        length: 25,
+        omission: '...',
+    });
+}
+
+function truncateHash(value) {
+    return _.truncate(value, {
+        length: 18,
+        omission: '...',
+    });
+}
 
 function convertDateTimeWithTimezoneForMySQLFormat(value) {
     return new Date(new Date(value) - new Date().getTimezoneOffset() * 60000)
@@ -79,4 +94,6 @@ export default {
     checkPhoneIsValid,
     ValueInCurrency,
     checkPhoneIsExistAsMain,
+    truncateAddress,
+    truncateHash,
 };
