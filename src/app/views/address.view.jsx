@@ -48,25 +48,21 @@ const Address = (props) => {
 
     return (
         <Container fluid>
-            <Row>
-                <Col md={{ span: 6, offset: 3 }} lg={6}>
-                    <Card className="text-center" className="mt-3 text-center">
-                        <Card.Header>ĐỊA CHỈ</Card.Header>
-                        <Card.Body>
-                            <Card.Title>
-                                Địa chỉ: <code>{props.match.params.address}</code>
-                            </Card.Title>
-                            <Card.Title>
-                                Số dư:{' '}
-                                <span className="text-primary" style={{ fontSize: 20 }}>
-                                    {formatter.format(balance)}
-                                </span>
-                            </Card.Title>
-                        </Card.Body>
-                        <Card.Footer className="text-muted">Blockchain - HCMUS - 2021</Card.Footer>
-                    </Card>
-                </Col>
-            </Row>
+            <Card className="text-center" className="mt-3 text-center">
+                <Card.Header>ĐỊA CHỈ</Card.Header>
+                <Card.Body>
+                    <Card.Title>
+                        Địa chỉ: <code>{props.match.params.address}</code>
+                    </Card.Title>
+                    <Card.Title>
+                        Số dư:{' '}
+                        <span className="text-primary" style={{ fontSize: 20 }}>
+                            {formatter.format(balance)}
+                        </span>
+                    </Card.Title>
+                </Card.Body>
+                <Card.Footer className="text-muted">Blockchain - HCMUS - 2021</Card.Footer>
+            </Card>
         </Container>
     );
 };

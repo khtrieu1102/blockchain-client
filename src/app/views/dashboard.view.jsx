@@ -83,66 +83,62 @@ const Dashboard = (props) => {
 
     return (
         <Container fluid>
-            <Row>
-                <Col md={{ span: 6, offset: 3 }} lg={6}>
-                    <Card className="text-center" className="mt-3 text-center">
-                        <Card.Header>DASHBOARD</Card.Header>
-                        <Card.Body>
-                            <Card.Title>
-                                Hi,{' '}
-                                {!username || username === '' ? (
-                                    <Link to="/login">
-                                        <span className="text-primary">Use your wallet now!</span>
-                                    </Link>
-                                ) : (
-                                    <span>{username.toUpperCase()}</span>
-                                )}
-                            </Card.Title>
-                            {isAuthenticated && (
-                                <p>
-                                    Your balance:{' '}
-                                    <span className="text-primary" style={{ fontSize: 20 }}>
-                                        {balance}
-                                    </span>
-                                </p>
-                            )}
-                            <Col>
-                                <Button
-                                    variant="primary"
-                                    className="extraButton"
-                                    onClick={mineBlockHandle}
-                                    disabled={!isAuthenticated}
-                                >
-                                    Mine a block (auto in a pool)
-                                </Button>
-                            </Col>
-                            <Col className="mt-2">
-                                <Link to="/transaction" className="extraButton">
-                                    <Button
-                                        variant="primary"
-                                        className="extraButton"
-                                        disabled={!isAuthenticated}
-                                    >
-                                        Mine a block (choose from pool)
-                                    </Button>
-                                </Link>
-                            </Col>
-                            <Col className="mt-2">
-                                <Link to="/transfer" className="extraButton">
-                                    <Button
-                                        variant="primary"
-                                        className="extraButton"
-                                        disabled={!isAuthenticated}
-                                    >
-                                        Send coin to an address
-                                    </Button>
-                                </Link>
-                            </Col>
-                        </Card.Body>
-                        <Card.Footer className="text-muted">Blockchain - HCMUS - 2021</Card.Footer>
-                    </Card>
-                </Col>
-            </Row>
+            <Card className="text-center" className="mt-3 text-center">
+                <Card.Header>DASHBOARD</Card.Header>
+                <Card.Body>
+                    <Card.Title>
+                        Hi,{' '}
+                        {!username || username === '' ? (
+                            <Link to="/login">
+                                <span className="text-primary">Use your wallet now!</span>
+                            </Link>
+                        ) : (
+                            <span>{username.toUpperCase()}</span>
+                        )}
+                    </Card.Title>
+                    {isAuthenticated && (
+                        <p>
+                            Your balance:{' '}
+                            <span className="text-primary" style={{ fontSize: 20 }}>
+                                {balance}
+                            </span>
+                        </p>
+                    )}
+                    <Col>
+                        <Button
+                            variant="primary"
+                            className="extraButton"
+                            onClick={mineBlockHandle}
+                            disabled={!isAuthenticated}
+                        >
+                            Mine a block (auto in a pool)
+                        </Button>
+                    </Col>
+                    <Col className="mt-2">
+                        <Link to="/transaction" className="extraButton">
+                            <Button
+                                variant="primary"
+                                className="extraButton"
+                                disabled={!isAuthenticated}
+                            >
+                                Mine a block (choose from pool)
+                            </Button>
+                        </Link>
+                    </Col>
+                    <Col className="mt-2">
+                        <Link to="/transfer" className="extraButton">
+                            <Button
+                                variant="primary"
+                                className="extraButton"
+                                disabled={!isAuthenticated}
+                            >
+                                Send coin to an address
+                            </Button>
+                        </Link>
+                    </Col>
+                </Card.Body>
+                <Card.Footer className="text-muted">Blockchain - HCMUS - 2021</Card.Footer>
+            </Card>
         </Container>
     );
 };
