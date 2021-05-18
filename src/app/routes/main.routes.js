@@ -18,7 +18,31 @@ const main_routes = [
     },
     {
         path: '/blockchain',
-        component: lazy(() => import('../views/blockchain.view')),
+        component: lazy(() => import('../views/blockchain-list.view')),
+    },
+    {
+        path: '/address/:address',
+        component: lazy(() => import('../views/address.view')),
+    },
+    {
+        path: '/uTxO',
+        component: lazy(() => import('../views/unspentTxOutput.view')),
+    },
+    {
+        path: '/transfer',
+        component: lazy(() => import('../views/transfer.view')),
+    },
+    {
+        path: '/transaction-pool',
+        component: lazy(() => import('../views/transaction-list.view')),
+    },
+    {
+        path: '/transaction/:transactionId',
+        component: lazy(() => import('../views/transaction-detail.view')),
+    },
+    {
+        path: '/block/:blockHash',
+        component: lazy(() => import('../views/block-detail.view')),
     },
     {
         path: '*',

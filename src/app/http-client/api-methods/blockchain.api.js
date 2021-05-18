@@ -72,6 +72,24 @@ const getTransactionPool = (address) => {
         })
         .catch((err) => Promise.reject(err));
 };
+
+const getTransactionDetail = (transactionId) => {
+    return httpClient
+        .get(`/transaction/${transactionId}`)
+        .then((result) => {
+            return Promise.resolve(result);
+        })
+        .catch((err) => Promise.reject(err));
+};
+
+const getBlockDetail = (blockHash) => {
+    return httpClient
+        .get(`/block/${blockHash}`)
+        .then((result) => {
+            return Promise.resolve(result);
+        })
+        .catch((err) => Promise.reject(err));
+};
 export default {
     getAllBlocks,
     mineRawBlock,
@@ -81,4 +99,6 @@ export default {
     sendTransaction,
     getAlluTxOsAddress,
     getTransactionPool,
+    getTransactionDetail,
+    getBlockDetail,
 };
