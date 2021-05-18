@@ -1,11 +1,18 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
+import { FaReceipt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-const Block = (props) => {
+const BlockItem = (props) => {
     const { blockData } = props;
     return (
         <Card style={{ marginTop: 20 }}>
-            <Card.Header>Block #{blockData.index}</Card.Header>
+            <Card.Header style={{ display: 'flex' }} className="justify-content-between">
+                <span>Block #{blockData.index}</span>
+                <Link to={`/blocks/${blockData.id}`}>
+                    <FaReceipt size={20} />
+                </Link>
+            </Card.Header>
             <Card.Body>
                 <p>
                     Hash: <code>{blockData.hash}</code>
@@ -25,4 +32,4 @@ const Block = (props) => {
     );
 };
 
-export default Block;
+export default BlockItem;

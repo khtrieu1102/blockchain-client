@@ -6,7 +6,7 @@ import { Button, Row, Col, Container, Card, Spinner } from 'react-bootstrap';
 import actionCreators from '../redux/action-creators';
 import { useDispatch, useSelector } from 'react-redux';
 import apiMethods from '../http-client/api-methods';
-import BlockList from '../components/blockchain/block-list';
+import BlockItem from '../components/blockchain/block-item';
 
 const { Title } = Typography;
 
@@ -36,12 +36,11 @@ const BlockchainView = (props) => {
 
     return (
         <Container fluid>
-            <Row>
-                <Col md={{ span: 5, offset: 3 }} lg={6}>
-                    <h5 style={{ textAlignment: 'center' }}>BLOCKCHAIN</h5>
-                    {data && <BlockList data={data} />}
-                </Col>
-            </Row>
+            <h5 style={{ textAlignment: 'center' }}>BLOCKCHAIN</h5>
+            {data &&
+                data.reverse().map((value, index) => {
+                    return <BlockItem blockData={value} />;
+                })}
         </Container>
     );
 };

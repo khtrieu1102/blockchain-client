@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import EmployeeHeaderNavbar from './nav-bar';
 import EmployeeCustomSidebar from './custom-side-bar';
-import { Jumbotron, Container } from 'react-bootstrap';
+import { Jumbotron, Container, Col, Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import './layout.scss';
 import { useLocation } from 'react-router';
@@ -41,7 +41,11 @@ const UsersLayout = (props) => {
                 </Container>
             </Jumbotron>
 
-            {props.children}
+            <Container fluid style={{ width: '70%' }}>
+                <Row className="justify-content-md-center">
+                    <Col lg={12}>{props.children}</Col>
+                </Row>
+            </Container>
         </Fragment>
     );
 };

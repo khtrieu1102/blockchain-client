@@ -89,10 +89,10 @@ const Dashboard = (props) => {
                         <Card.Header>DASHBOARD</Card.Header>
                         <Card.Body>
                             <Card.Title>
-                                Xin chào,{' '}
+                                Hi,{' '}
                                 {!username || username === '' ? (
                                     <Link to="/login">
-                                        <span className="text-primary">Sử dụng ví ngay!</span>
+                                        <span className="text-primary">Use your wallet now!</span>
                                     </Link>
                                 ) : (
                                     <span>{username.toUpperCase()}</span>
@@ -100,7 +100,7 @@ const Dashboard = (props) => {
                             </Card.Title>
                             {isAuthenticated && (
                                 <p>
-                                    Số dư khả dụng của bạn:{' '}
+                                    Your balance:{' '}
                                     <span className="text-primary" style={{ fontSize: 20 }}>
                                         {balance}
                                     </span>
@@ -113,7 +113,7 @@ const Dashboard = (props) => {
                                     onClick={mineBlockHandle}
                                     disabled={!isAuthenticated}
                                 >
-                                    Mine a block (no data)
+                                    Mine a block (auto in a pool)
                                 </Button>
                             </Col>
                             <Col className="mt-2">
@@ -123,7 +123,7 @@ const Dashboard = (props) => {
                                         className="extraButton"
                                         disabled={!isAuthenticated}
                                     >
-                                        Mine a raw block (with transaction data)
+                                        Mine a block (choose from pool)
                                     </Button>
                                 </Link>
                             </Col>
@@ -134,7 +134,7 @@ const Dashboard = (props) => {
                                         className="extraButton"
                                         disabled={!isAuthenticated}
                                     >
-                                        Transfer
+                                        Send coin to an address
                                     </Button>
                                 </Link>
                             </Col>
