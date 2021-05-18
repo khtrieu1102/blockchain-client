@@ -7,7 +7,6 @@ const { Text } = Typography;
 
 const UTxOTable = (props) => {
     const { data } = props;
-    console.log({ data });
 
     return (
         <React.Fragment>

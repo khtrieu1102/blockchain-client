@@ -46,4 +46,13 @@
 
 ---
 
-## 3. Video sử dụng:
+## 3. Cách sử dụng và video hướng dẫn:
+
+Tải server, client về tại 2 github bên trên.
+Với mỗi project, gõ các lệnh
+
+> npm install
+
+> npm start
+
+Video Youtube: https://youtu.be/GN7dtvE_jI4

@@ -86,7 +86,7 @@ const checkPhoneIsExistAsMain = async (phoneValue) => {
 };
 
 function ValueInCurrency(value) {
-    return new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'VND' }).format(value);
+    return new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'BTC' }).format(value);
 }
 
 export default {
