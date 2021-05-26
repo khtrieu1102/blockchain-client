@@ -6,6 +6,13 @@
 
 ## Sinh viên: NGUYỄN NGỌC KHẮC TRIỆU - 1612738
 
+# Công nghệ sử dụng
+- [x] **ReactJS** kết hợp React-Bootstrap + Ant Design
+- [x] **React-Redux, Redux Thunk**
+
+# Các kĩ thuật/thuật toán
+- [x] Authentication (nhiều role), **Access Token JWT**
+
 ## 0. Sản phẩm:
 
 -   Client: [Tại chính github này](https://github.com/khtrieu1102/blockchain-client)
